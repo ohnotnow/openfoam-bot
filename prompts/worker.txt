@@ -1,0 +1,34 @@
+We have the following request from the user about an OpenFOAM simulation:
+
+<request>{{ requirements }}</request>
+
+{% if project_description %}
+    The users overall project is as follows:
+
+    <project>
+    {{ project_description }}
+    </project>
+{% endif %}
+
+We have the following specification from our Advisor LLM:
+
+<specification>{{ specification }}</specification>
+
+YOUR TASK: Generate the necessary OpenFOAM folders/files (system, constant, 0) for a minimal but valid case.
+
+- Include controlDict, fvSchemes, fvSolution under system.
+- Include turbulence-related files under constant/ (e.g., turbulenceProperties, thermophysicalProperties, transportProperties).
+- Include 0/U, 0/p, 0/T (if needed), with boundary conditions matching the plan above.
+- Use placeholders if needed (e.g., for mesh generation), but keep everything consistent with the solver and turbulence model.
+- Make sure the contents of the file are valid OpenFOAM files - do not interpret them as JSON or YAML - use OpenFOAM conventions.  The contents will be used directly in a simulation so incorrect file contents will break the users HPC cluster.
+
+Your response should be in and XML-like format following the following structure:
+
+<files>
+    <file path="system/controlDict">Contents of controlDict</file>
+    <file path="system/fvSchemes">Contents of fvSchemes</file>
+    ...
+    <file path="0/U">Contents of 0/U</file>
+    <file path="0/p">Contents of 0/p</file>
+    ...
+</files>

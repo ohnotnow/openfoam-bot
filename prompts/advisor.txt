@@ -1,0 +1,41 @@
+We have a request from the user about creating an OpenFOAM simulation.
+
+<requirements>{{ requirements }}</requirements>
+
+We have the following initial specification from our Investigator LLM:
+
+<specification>{{ specification }}</specification>
+
+{% if answer %}
+    The user has provided the following additional information to the Investigator LLM:
+
+    <answer>{{ answer }}</answer>
+{% endif %}
+
+
+{% if project_description %}
+    The users overall project is as follows:
+
+    <project>
+    {{ project_description }}
+    </project>
+
+    Please take this into account when thinking about the user's problem statement.
+{% endif %}
+
+
+Based on this information, please:
+
+1. Recommend which OpenFOAM solver is best suited for a steady, compressible, transonic flow.
+2. Advise on relevant boundary conditions (inlet, outlet, far-field, airfoil wall) and how to handle angle of attack.
+3. Suggest any best-practice tips for numerical schemes (fvSchemes) and solver controls (fvSolution).
+4. Summarize the recommended approach in a concise, structured way that we can pass to a file-generator LLM.
+
+You should return a JSON object as follows:
+
+{
+    "solver": "The recommended OpenFOAM solver.",
+    "boundary_conditions": "The recommended boundary conditions.",
+    "best_practice_tips": "The best-practice tips for numerical schemes and solver controls.",
+    "summary": "A summary of the recommended approach.",
+}

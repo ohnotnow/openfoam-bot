@@ -1,0 +1,28 @@
+The user is doing a PhD in Aerospace engineering and has provided the following problem statement about an OpenFOAM simulation:
+
+<requirements>{{ requirements }}</requirements>
+
+1. Please identify the key parameters and assumptions from the user's description.
+2. Check if there are any missing or ambiguous details that we should clarify.
+2a. For any missing or ambiguous details - if there are likely 'best guesses' then please make them - we want to make this as useful to the user as possible. You can assume PhD level understanding from the users side.
+3. Produce a structured specification (in JSON) that summarizes what we know so far, and clearly list any questions or missing info.
+
+{% if project_description %}
+    The users overall project is as follows:
+
+    <project>
+    {{ project_description }}
+    </project>
+
+    Please take this into account when thinking about the user's problem statement.
+{% endif %}
+
+Example response:
+
+{
+    "key_parameters": ["density", "viscosity", "temperature"],
+    "assumptions": ["constant density", "constant viscosity"],
+    "questions": ["What is the temperature of the fluid?"],
+}
+
+If you have no questions please just return an empty JSON array for that field.

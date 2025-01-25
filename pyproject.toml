@@ -1,0 +1,10 @@
+[project]
+name = "openfoam-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jinja2>=3.1.5",
+    "pydantic-ai>=0.0.20",
+]
